@@ -1,0 +1,150 @@
+%
+% Template for OPTCON course projects
+%
+\documentclass[a4paper,11pt,oneside]{book}
+
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Huge}
+  
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb,amsmath,color}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{float}
+
+\begin{document}
+\pagestyle{myheadings}
+
+%%%%%%%%%%% Cover %%%%%%%%%%%
+\thispagestyle{empty}                                                 
+\begin{center}                                                            
+    \vspace{5mm}
+    {\LARGE UNIVERSIT\`A DI BOLOGNA} \\                       
+      \vspace{5mm}
+\end{center}
+\begin{center}
+  \includegraphics[scale=.27]{pictures/logo_unibo}
+\end{center}
+\begin{center}
+      \vspace{5mm}
+      {\LARGE School of Engineering} \\
+        \vspace{3mm}
+      {\Large Master Degree in Automation Engineering} \\
+      \vspace{20mm}
+      {\LARGE Optimal Control} \\
+
+      \vspace{5mm}{\Large\textbf{Course Project $-$ Group 5\\Optimal Control of a Quadrotor with Suspended Load}}                  
+      \vspace{15mm}
+\end{center}
+\begin{flushleft}                                                                              
+     {\large Professor: \textbf{\@ Giuseppe Notarstefano}} \\        
+      \vspace{13mm}
+\end{flushleft}
+\begin{flushright}
+      {\large Students:} Friz Anna\\
+      Ruscelli Gabriele\\
+      Valeri Eleonora
+\end{flushright}        %capoverso allineato a destra
+\begin{center}
+\vfill
+      {\large Academic year \@2023/2024} \\
+\end{center}
+
+
+
+\newpage
+\thispagestyle{empty}
+
+%%%%%%%%%%% Abstract %%%%%%%%%%%%
+\begin{center}
+\chapter*{}
+\thispagestyle{empty}
+{\Huge \textbf{Abstract}}\\
+\vspace{15mm}
+
+This project addresses the optimal control of a planar quadrotor with a suspended load. Tasks involve dynamics discretization, trajectory generation through the Newton's method algorithm, trajectory tracking via Linear Quadratic Regulator (LQR) and Model Predictive Control (MPC).
+Finally, the quadrotor movement will be shown in an animation.
+\end{center}
+
+\tableofcontents \thispagestyle{empty}
+% \listoffigures\thispagestyle{empty}
+
+%%%%%%%%%% Introduction %%%%%%%%%%
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+In this project, we are required to design an optimal trajectory for a quadrotor with a suspended load. 
+
+The project consists of four main steps:
+\begin{itemize}
+  \item Task 0 - Problem Setup:
+Discretization of the quadrotor dynamics and writing of the iscrete-time state-space equations.
+  \item Task 1 - Trajectory Generation I:
+Design of an optimal trajectory to move from one equilibrium configuration to another, using a Newton's like algorithm.
+  \item Task 2 - Trajectory Generation II:
+Generation of a desired (smooth) state$-$input curve and
+application of the trajectory generation task (Task 1) on this new desired trajectory.
+    \item Task 3 - Trajectory Tracking via LQR:
+Linearization of the model around the optimal trajectory obtained in the previous point and definition of the optimal feedback controller to perform trajectory tracking through LQR algorithm.
+    \item Task 4 - Trajectory
+tracking via MPC: Exploitation of an MPC algorithm to track the optimal trajectory $(x_{opt}, u_{opt})$ computed in Task 2 linearizing the vehicle dynamics about it.
+    \item Task 5 - Animation:
+Producing a simple animation of the vehicle executing Task 3.
+\end{itemize}
+
+
+
+%%%%%%%%%% Chapters %%%%%%%%%
+
+\chapter{Task 0 - Problem setup}
+\input{chapters/Task0}
+
+\chapter{Task 1 - Trajectory generation (I)}
+\input{chapters/Task1}
+
+\chapter{Task 2 - Trajectory generation (II)}
+\input{chapters/Task2}
+
+\chapter{Task 3 - Trajectory tracking via LQR}
+\input{chapters/Task3}
+
+\chapter{Task 4 - Trajectory tracking via MPC}
+\input{chapters/Task4}
+
+\chapter{Task 5 - Animation}
+\input{chapters/Task5}
+
+
+%%%%%%%%%% Conclusions %%%%%%%%%%
+\chapter*{Conclusions}
+\addcontentsline{toc}{chapter}{Conclusions}
+
+With the realization of this project we solved different tasks and were able to design an optimal control for a planar quadrotor with suspended load.
+
+\begin{itemize}
+    \item In the first task, a Newton's like algorithm was implemented to design the
+optimal trajectoy allowing to follow a step reference to move from one equilibrium configuration to another. In order to do this, the Armijo algorithm for step size selection was exploited.
+    \item In the second task we exploited again the Newton's like algorithm to design an optimal
+trajectory between two equilibria, but with a reference curve designed as a sigmoid function.
+    \item In the third task we used the LQR method to follow the optimal trajectory
+designed in task 2. Furthermore, we proved that the controller is able
+to achieve the target starting with perturbed initial conditions.
+    \item In the fourth task we applied the MPC algorithm to track the
+optimal trajectory designed in task 2 and we proved again that the controller is able to achieve the target starting with perturbed initial conditions.
+
+\end{itemize}
+
+%%%%%%%%%% Bibliography %%%%%%%%%%%
+%\bibliography{bibfile}{}
+%\bibliographystyle{plain}
+%\addcontentsline{toc}{chapter}{Bibliography}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
